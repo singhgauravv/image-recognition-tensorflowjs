@@ -1,0 +1,19 @@
+{
+  "name": "image-recognition-tensorflowjs",
+  "version": "1.0.0",
+  "description": "Given the pixel intensity values in an image, identify whether the character is a hand-written 0,1,2....9.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@tensorflow/tfjs-node": "^4.20.0",
+    "lodash": "^4.17.21",
+    "memoize": "^10.0.0",
+    "mnist-data": "^1.2.6",
+    "shuffle-seed": "^1.1.6"
+  }
+}
