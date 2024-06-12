@@ -4,7 +4,7 @@
 
 Given the pixel intensity values in an image, identify whether the character is a hand-written 0,1,2....9.
 
-## Accuracy Achieved:
+## Accuracy Achieved: 91%
 
 ## Data source: MNIST database (Modified National Institute of Standards and Technology database)
 
