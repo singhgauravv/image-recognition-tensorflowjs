@@ -5,7 +5,7 @@ const _ = require("lodash");
 const mnist = require("mnist-data");
 
 /** Specify the number of images to be loaded. */
-const mnistData = mnist.training(0, 5000);
+const mnistData = mnist.training(0, 20000);
 
 /** 784 features for every image */
 const features = mnistData.images.values.map((image) => _.flatMap(image));

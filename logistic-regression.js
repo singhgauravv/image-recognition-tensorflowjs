@@ -57,6 +57,8 @@ class LogisticRegression {
         this.gradientDescent(featureSlice, labelSlice);
       }
 
+      /** Breakpoint here coz many variable are already defined here, so a good point to start debugging & analyzing memory usage. */
+      debugger;
       this.recordCost();
       this.updateLearningRate();
     }
