@@ -43,6 +43,7 @@ Given the pixel intensity values in an image, identify whether the character is 
 
 2. Minimize Memory Usage
    (a) Run ` node --inspect-brk --max-old-space-size=4096 index.js` and take a memory [snapshot](./images/memory-snapshot-pre.PNG).
+   (b) Introduce loadData() fn.
 
 ## Data source: MNIST database (Modified National Institute of Standards and Technology database)
 
