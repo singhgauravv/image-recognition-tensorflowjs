@@ -35,7 +35,8 @@ class LogisticRegression {
       .transpose() // Transpose of the feature matrix
       .matMul(differences) // Dot product with prediction errors
       .div(features.shape[0]); // Average over the number of data points
-    this.weights = this.weights.sub(slopes.mul(this.options.learningRate));
+
+    return this.weights.sub(slopes.mul(this.options.learningRate));
   }
 
   train() {
@@ -48,16 +49,20 @@ class LogisticRegression {
       for (let j = 0; j < batchQuantity; j++) {
         const startIndex = j * this.options.batchSize;
         const { batchSize } = this.options;
-        const featureSlice = this.features.slice(
-          [startIndex, 0],
-          [batchSize, -1]
-        );
 
-        const labelSlice = this.labels.slice([startIndex, 0], [batchSize, -1]);
-        this.gradientDescent(featureSlice, labelSlice);
+        this.weights = tf.tidy(() => {
+          const featureSlice = this.features.slice(
+            [startIndex, 0],
+            [batchSize, -1]
+          );
+
+          const labelSlice = this.labels.slice(
+            [startIndex, 0],
+            [batchSize, -1]
+          );
+          return this.gradientDescent(featureSlice, labelSlice);
+        });
       }
-
-      /** Breakpoint here coz many variable are already defined here, so a good point to start debugging & analyzing memory usage. */
       debugger;
       this.recordCost();
       this.updateLearningRate();
@@ -65,8 +70,7 @@ class LogisticRegression {
   }
 
   predict(observations) {
-    /** Standardize observations
-     */
+    /** Standardize observations */
     return this.processFeatures(observations)
       .matMul(this.weights)
       .softmax()
