@@ -1,10 +1,18 @@
 # Multinominal Logistic Regression - Image Recognition
 
+## How to Run:
+
+Run `node index.js` in any of the two directories to check the accuracy of the model.
+
 ## Problem Statement:
 
 Given the pixel intensity values in an image, identify whether the character is a hand-written 0,1,2....9.
 
-## Accuracy Achieved: 89%
+## Accuracy Achieved: 96%
+
+## Memory Usage Improvement: 90% (before optimization 14 GB, after 1.6 GB)
+
+## Memory Snapshorts: [Before](./images/before-opti.PNG) & [After](./images//after-opti.PNG) Optimization
 
 ## Performance Optimization in the world of JavaScript
 
@@ -89,7 +97,12 @@ To represent label 0, the encoding will be [1,0,0,0,0,0,0,0,0,0], and so on.
 
    **Key Characteristics of WeakMap**
 
-9. Garbage Collection: If an object used as a key in a WeakMap has no other references, it can be garbage collected.
-10. Keys Must Be Objects: Unlike regular maps, keys in a WeakMap must be objects, not primitive values.
-11. Non-Enumerable: WeakMaps do not expose their keys and do not provide a way to iterate over their entries.
-12. No Clear Method: WeakMaps do not have a clear method to remove all entries.
+(a) Garbage Collection: If an object used as a key in a WeakMap has no other references, it can be garbage collected.
+
+(b) Keys Must Be Objects: Unlike regular maps, keys in a WeakMap must be objects, not primitive values.
+
+(c) Non-Enumerable: WeakMaps do not expose their keys and do not provide a way to iterate over their entries.
+
+(d) No Clear Method: WeakMaps do not have a clear method to remove all entries.
+
+9. **[Cross Entropy:](./images/ce.PNG)** Cross entropy is a loss function used in classification problems, particularly for measuring the performance of a model whose output is a probability value between 0 and 1. It is commonly used in binary classification (as binary cross entropy) and multi-class classification (as categorical cross entropy).

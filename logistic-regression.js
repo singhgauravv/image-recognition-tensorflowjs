@@ -113,21 +113,25 @@ class LogisticRegression {
   }
 
   recordCost() {
-    /** Calculate cross entropy. */
-    const guesses = this.features.matMul(this.weights).sigmoid();
-    const termOne = this.labels.transpose().matMul(guesses.log());
+    const cost = tf.tidy(() => {
+      /** Calculate cross entropy. */
+      const guesses = this.features.matMul(this.weights).sigmoid();
+      const termOne = this.labels.transpose().matMul(guesses.add(1e-7).log());
 
-    const termTwo = this.labels
-      .mul(-1)
-      .add(1)
-      .transpose()
-      .matMul(guesses.mul(-1).add(1).log());
+      const termTwo = this.labels.mul(-1).add(1).transpose().matMul(
+        guesses
+          .mul(-1)
+          .add(1)
+          .add(1e-7) // Add a constant to avoid log(0).
+          .log()
+      );
 
-    const cost = termOne
-      .add(termTwo)
-      .div(this.features.shape[0])
-      .mul(-1)
-      .arraySync();
+      return termOne
+        .add(termTwo)
+        .div(this.features.shape[0])
+        .mul(-1)
+        .arraySync();
+    });
 
     this.costHistory.unshift(cost);
   }
