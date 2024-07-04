@@ -9,7 +9,6 @@ const features = mnistData.images.values.map((image) => _.flatMap(image));
 const csvContent = features
   .map((feature) => `sample_value: [${feature.join(",")}]`)
   .join("\n");
-console.log(csvContent);
 
 /** Write content to a CSV file */
 fs.writeFile("sample-features.csv", csvContent, (err) => {
