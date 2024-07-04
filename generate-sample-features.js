@@ -13,7 +13,7 @@ const csvContent = features
 /** Write content to a CSV file */
 fs.writeFile("sample-features.csv", csvContent, (err) => {
   if (err) {
-    console.log("Error writing the csv file.");
+    console.log("Error while writing the csv file.");
   } else {
     console.log("file write successful.");
   }
