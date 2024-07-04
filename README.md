@@ -1,5 +1,7 @@
 # Multinominal Logistic Regression - Image Recognition
 
+#### This repository implements logistic regression from scratch. Application to be further enhanced with a NodeJS server & React Client.
+
 ## How to Run:
 
 Run `node index.js` at root to test the optimized version.
