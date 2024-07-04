@@ -1,6 +1,12 @@
+/** Standard imports. */
 const tf = require("@tensorflow/tfjs");
 const _ = require("lodash");
 
+/** Main Logistic Regression class that exposes different methods in the context of the model.
+ * @param features: 28*28 pixels images.
+ * @param labels: labels.
+ * @param options: model attributes.
+ */
 class LogisticRegression {
   constructor(features, labels, options) {
     this.features = this.processFeatures(features);
@@ -9,7 +15,7 @@ class LogisticRegression {
     this.costHistory = [];
 
     this.options = Object.assign(
-      // Default values.
+      /**default model attributes */
       {
         learningRate: 0.1,
         iterations: 1000,
@@ -19,7 +25,7 @@ class LogisticRegression {
       options
     );
 
-    /** The following code initializes the value of weights. */
+    /** Initialize weights. */
     this.weights = tf.zeros([this.features.shape[1], this.labels.shape[1]]);
   }
 
@@ -38,7 +44,7 @@ class LogisticRegression {
 
     return this.weights.sub(slopes.mul(this.options.learningRate));
   }
-
+  /** Method to train the model. */
   train() {
     const batchQuantity = Math.floor(
       this.features.shape[0] / this.options.batchSize
@@ -69,6 +75,9 @@ class LogisticRegression {
     }
   }
 
+  /** Method to make a prediction using the trained model.
+   * @param: A 2D array representing image pixels.
+   */
   predict(observations) {
     /** Standardize observations */
     return this.processFeatures(observations)

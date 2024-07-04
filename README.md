@@ -2,7 +2,9 @@
 
 ## How to Run:
 
-Run `node index.js` in any of the two directories to check the accuracy of the model.
+Run `node index.js` at root to test the optimized version.
+
+Run `node index.js` inside v1 to test the unoptimized version.
 
 ## Problem Statement:
 
@@ -12,7 +14,43 @@ Given the pixel intensity values in an image, identify whether the character is 
 
 ## Memory Usage Improvement: 90% (before optimization 14 GB, after 1.6 GB)
 
-## Memory Snapshorts: [Before](./images/before-opti.PNG) & [After](./images//after-opti.PNG) Optimization
+Strategy: Remove reference to unused variables to make them eligible for garbage collection.
+
+## Memory Snapshots: [Before](./images/before-opti.PNG) & [After](./images//after-opti.PNG) Optimization
+
+## Data source: MNIST database (Modified National Institute of Standards and Technology database)
+
+## How to encode features?
+
+In the context of image recognition tasks using the MNIST dataset with TensorFlow.js and JavaScript, encoding features involves representing each image's pixel values in a format suitable for machine learning algorithms.
+
+#### Encoding Pixel Values:
+
+Each image in the MNIST dataset consists of a 28x28 grid of pixels, totaling 784 pixels per image. To encode these pixels, we flatten the 28x28 grid into a single array containing 784 elements. This array represents the grayscale values of each pixel in the image.
+
+#### Array Organization:
+
+The flattened pixel array for each image is then nested within an outer array. This outer array serves as a container for all the image data in the dataset.
+
+## How to encode label values?
+
+In our case, the total number of possible label values are going to be 10, i.e 0 to 9. To encore a optimal label values encoding,
+we will create an array that will contain 1 at the index equal to the label value and otherwise 0.
+
+For example, to represent label 5, the encoding will be [0,0,0,0,0,1,0,0,0,0].
+To represent label 0, the encoding will be [1,0,0,0,0,0,0,0,0,0], and so on.
+
+## Toolkit:
+
+1. JavaScript
+2. TensorFlowJs
+
+## Application Enhancement
+
+1. Save the model.
+2. Wrap the entire business logic in a NodeJS backend server.
+3. Allow an handwritten image to be uploaded via the client, convert that image into a 28\*28 pixels, and encode it.
+4. Encoding of the image into a flattaned array to satisfy the input requirements of this model can be done at the frontend or the backend.
 
 ## Performance Optimization in the world of JavaScript
 
@@ -55,34 +93,6 @@ Given the pixel intensity values in an image, identify whether the character is 
    (c) Tensorflow Memory Usage: It holds reference to every tensor that gets created during the program run.
    (d) Use tf.tidy() cleans up tensors automatically inside it. If tensors need to be maintianed, they must be returned
    from this function.
-   (e)
-
-## Data source: MNIST database (Modified National Institute of Standards and Technology database)
-
-## How to encode features?
-
-In the context of image recognition tasks using the MNIST dataset with TensorFlow.js and JavaScript, encoding features involves representing each image's pixel values in a format suitable for machine learning algorithms.
-
-#### Encoding Pixel Values:
-
-Each image in the MNIST dataset consists of a 28x28 grid of pixels, totaling 784 pixels per image. To encode these pixels, we flatten the 28x28 grid into a single array containing 784 elements. This array represents the grayscale values of each pixel in the image.
-
-#### Array Organization:
-
-The flattened pixel array for each image is then nested within an outer array. This outer array serves as a container for all the image data in the dataset.
-
-## How to encode label values?
-
-In our case, the total number of possible label values are going to be 10, i.e 0 to 9. To encore a optimal label values encoding,
-we will create an array that will contain 1 at the index equal to the label value and otherwise 0.
-
-For example, to represent label 5, the encoding will be [0,0,0,0,0,1,0,0,0,0].
-To represent label 0, the encoding will be [1,0,0,0,0,0,0,0,0,0], and so on.
-
-## Toolkit:
-
-1. JavaScript
-2. TensorFlowJs
 
 ## Definition
 
