@@ -51,6 +51,7 @@ To represent label 0, the encoding will be [1,0,0,0,0,0,0,0,0,0], and so on.
 2. Wrap the entire business logic in a NodeJS backend server.
 3. Allow an handwritten image to be uploaded via the client, convert that image into a 28\*28 pixels, and encode it.
 4. Encoding of the image into a flattaned array to satisfy the input requirements of this model can be done at the frontend or the backend.
+5. Allow the user to upload an image containing more than 1 digits and prediction the number.
 
 ## Performance Optimization in the world of JavaScript
 
